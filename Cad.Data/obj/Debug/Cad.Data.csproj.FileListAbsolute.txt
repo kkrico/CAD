@@ -1,0 +1,4 @@
+C:\Users\ramos\documents\visual studio 2015\Projects\CAD\Cad.Data\bin\Debug\Cad.Data.dll
+C:\Users\ramos\documents\visual studio 2015\Projects\CAD\Cad.Data\bin\Debug\Cad.Data.pdb
+C:\Users\ramos\documents\visual studio 2015\Projects\CAD\Cad.Data\obj\Debug\Cad.Data.dll
+C:\Users\ramos\documents\visual studio 2015\Projects\CAD\Cad.Data\obj\Debug\Cad.Data.pdb
