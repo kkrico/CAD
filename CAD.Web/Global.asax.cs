@@ -1,4 +1,8 @@
-﻿using System;
+﻿using Cad.Web;
+using CAD.Web.Infraestructure;
+using Microsoft.Practices.Unity;
+using System;
+using System.Linq;
 using System.Web.Mvc;
 using System.Web.Routing;
 
@@ -12,8 +16,13 @@ namespace CAD.Web
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
-            IOCConfig.StartContainers(ControllerBuilder.Current);
+            IOC.ConfigureContainer(ControllerBuilder.Current);
 
+
+            var container = UnityConfig.GetConfiguredContainer();
+
+            var erro = container.Resolve<IRunOnError>();
+            var t = container.ResolveAll<IRunOnError>().ToList();
         }
 
         protected void Session_Start(object sender, EventArgs e)
@@ -23,7 +32,10 @@ namespace CAD.Web
 
         protected void Application_BeginRequest(object sender, EventArgs e)
         {
+            var container = UnityConfig.GetConfiguredContainer();
 
+            var erro = container.Resolve<IRunOnError>();
+            var t = container.ResolveAll<IRunOnError>().ToList();
         }
 
         protected void Application_AuthenticateRequest(object sender, EventArgs e)
@@ -33,7 +45,10 @@ namespace CAD.Web
 
         protected void Application_Error(object sender, EventArgs e)
         {
+            var container = UnityConfig.GetConfiguredContainer();
 
+            var erro = container.Resolve<IRunOnError>();
+            var t = container.ResolveAll<IRunOnError>().ToList();
         }
 
         protected void Session_End(object sender, EventArgs e)
@@ -43,7 +58,7 @@ namespace CAD.Web
 
         protected void Application_End(object sender, EventArgs e)
         {
-            IOCConfig.ShutdownContainers();
+            IOC.ShutdownContainers();
 
         }
     }

@@ -2,3 +2,4 @@ C:\Users\ramos\documents\visual studio 2015\Projects\CAD\Cad.Core\bin\Debug\Cad.
 C:\Users\ramos\documents\visual studio 2015\Projects\CAD\Cad.Core\bin\Debug\Cad.Core.pdb
 C:\Users\ramos\documents\visual studio 2015\Projects\CAD\Cad.Core\obj\Debug\Cad.Core.dll
 C:\Users\ramos\documents\visual studio 2015\Projects\CAD\Cad.Core\obj\Debug\Cad.Core.pdb
+C:\Users\ramos\documents\visual studio 2015\Projects\CAD\Cad.Core\obj\Debug\Cad.Core.csprojResolveAssemblyReference.cache

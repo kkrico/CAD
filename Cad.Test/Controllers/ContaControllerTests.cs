@@ -3,6 +3,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using System;
 using System.Web.Mvc;
+using CAD.Web.Model;
 
 namespace CAD.Web.Controllers.Test
 {

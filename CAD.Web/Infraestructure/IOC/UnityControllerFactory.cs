@@ -3,7 +3,7 @@ using System;
 using System.Web.Mvc;
 using System.Web.Routing;
 
-namespace CAD.Web.Infraestructure
+namespace CAD.Web.Infraestructure.IOC
 {
     public class UnityControllerFactory : DefaultControllerFactory
     {

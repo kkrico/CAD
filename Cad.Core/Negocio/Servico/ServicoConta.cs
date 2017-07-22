@@ -1,5 +1,6 @@
 using Cad.Core.Negocio.DTO;
 using Cad.Core.Negocio.Servico.Interface;
+using System.Diagnostics;
 
 namespace Cad.Core.Negocio.Servico
 {
@@ -7,7 +8,12 @@ namespace Cad.Core.Negocio.Servico
     {
         public void Autenticar(UsuarioDTO usuario)
         {
-            throw new System.NotImplementedException();
+            Debug.Write("Servico Conta!!!");
+        }
+
+        public void MetodoExclusivoDaConta()
+        {
+            
         }
     }
 }

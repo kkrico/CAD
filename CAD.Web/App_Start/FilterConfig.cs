@@ -1,4 +1,4 @@
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 
 namespace CAD.Web
 {
@@ -6,6 +6,7 @@ namespace CAD.Web
     {
         public static void RegisterGlobalFilters(GlobalFilterCollection filters)
         {
+            // Registre os filtros globais aqui
         }
     }
 }

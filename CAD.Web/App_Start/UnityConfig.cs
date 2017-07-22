@@ -1,3 +1,4 @@
+using CAD.Web.Infraestructure;
 using Microsoft.Practices.Unity;
 using Microsoft.Practices.Unity.Utility;
 using System;
@@ -44,7 +45,7 @@ namespace Cad.Web
                 {
                     foreach (var type in typeMapping.Value)
                     {
-                        container.RegisterType(typeMapping.Key, type, GetNameForRegsitration(type));
+                        container.RegisterType(typeMapping.Key, type, GetNameForRegistration(type));
                     }
                 }
             }
@@ -71,26 +72,20 @@ namespace Cad.Web
             return allInterfacesOnType.Except(allInterfacesOnType.SelectMany(i => i.GetInterfaces())).ToList();
         }
 
-        private static string GetNameForRegsitration(Type type)
+        private static string GetNameForRegistration(Type type)
         {
             var name = type.Name;
 
             return name;
         }
 
-        private static IEnumerable<Type> GetClassesFromAssemblies(IEnumerable<Assembly> assemblies = null)
+        public static IEnumerable<Type> GetClassesFromAssemblies(IEnumerable<Assembly> assemblies = null)
         {
             var allClasses = assemblies != null ? AllClasses.FromAssemblies(assemblies) : AllClasses.FromAssembliesInBasePath();
-            var d =
-                allClasses.Where(
-                    n =>
-                        n.Namespace != null &&
-                        !n.Namespace.StartsWith("System", StringComparison.InvariantCultureIgnoreCase));
             return
                 allClasses.Where(
                     n =>
-                        n.Namespace != null
-                        && n.Namespace.StartsWith(ApplicationNamespace, StringComparison.InvariantCultureIgnoreCase));
+                        n.Namespace != null);
         }
 
         public static IUnityContainer GetConfiguredContainer()
@@ -100,18 +95,26 @@ namespace Cad.Web
 
         public static void RegisterTypes(IUnityContainer container)
         {
+            container.RegisterType<IRunOnError, Farofa>();
         }
     }
 
     public class AllClasses
     {
-        private static readonly string NetFrameworkProductName = GetNetFrameworkProductName();
-        private static readonly string UnityProductName = GetUnityProductName();
+        static AllClasses()
+        {
+            NetFrameworkProductName = GetNetFrameworkProductName();
+            UnityProductName = GetUnityProductName();
+        }
+
+        private static readonly string NetFrameworkProductName;
+        private static readonly string UnityProductName;
 
         private static string GetUnityProductName()
         {
-            var productAttribute = typeof(UnityContainer)
-                .GetCustomAttributes(typeof(AssemblyProductAttribute), true);
+            var assembly = typeof(UnityContainer).Assembly;
+
+            var productAttribute = assembly.GetCustomAttributes(typeof(AssemblyProductAttribute), true);
 
             if (!productAttribute.Any()) return null;
 
@@ -122,13 +125,13 @@ namespace Cad.Web
         private static string GetNetFrameworkProductName()
         {
 
-            var productAttribute = typeof(object)
-                .GetCustomAttributes(typeof(AssemblyProductAttribute), true);
+            var assembly = typeof(object).Assembly;
+            var productAttribute = assembly.GetCustomAttributes(typeof(AssemblyProductAttribute), true);
 
             if (!productAttribute.Any()) return null;
 
-            var assembly = (AssemblyProductAttribute)productAttribute.First();
-            return assembly.Product;
+            var assemblyProductAttribute = (AssemblyProductAttribute)productAttribute.First();
+            return assemblyProductAttribute.Product;
         }
 
         public static IEnumerable<Type> FromLoadedAssemblies(bool includeSystemAssemblies = false, bool includeUnityAssemblies = false, bool includeDynamicAssemblies = false, bool skipOnError = true)
