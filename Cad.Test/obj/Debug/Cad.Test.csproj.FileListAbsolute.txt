@@ -29,5 +29,6 @@ c:\users\ramos\documents\visual studio 2015\Projects\CAD\Cad.Test\obj\Debug\Cad.
 c:\users\ramos\documents\visual studio 2015\Projects\CAD\Cad.Test\obj\Debug\Cad.Test.pdb
 C:\Users\ramos\documents\visual studio 2015\Projects\CAD\Cad.Test\bin\Debug\Cad.Core.dll
 C:\Users\ramos\documents\visual studio 2015\Projects\CAD\Cad.Test\bin\Debug\Cad.Core.pdb
-C:\Users\ramos\documents\visual studio 2015\Projects\CAD\Cad.Test\bin\Debug\Cad.Test.dll.CodeAnalysisLog.xml
-C:\Users\ramos\documents\visual studio 2015\Projects\CAD\Cad.Test\bin\Debug\Cad.Test.dll.lastcodeanalysissucceeded
+C:\Users\ramos\documents\visual studio 2015\Projects\CAD\Cad.Test\bin\Debug\Cad.Test.dll.config
+C:\Users\ramos\documents\visual studio 2015\Projects\CAD\Cad.Test\bin\Debug\System.Web.Optimization.dll
+C:\Users\ramos\documents\visual studio 2015\Projects\CAD\Cad.Test\bin\Debug\System.Web.Optimization.xml

@@ -26,3 +26,10 @@ c:\users\ramos\documents\visual studio 2015\Projects\CAD\CAD.Web\obj\Debug\CAD.W
 c:\users\ramos\documents\visual studio 2015\Projects\CAD\CAD.Web\obj\Debug\CAD.Web.pdb
 C:\Users\ramos\documents\visual studio 2015\Projects\CAD\CAD.Web\bin\Cad.Core.dll
 C:\Users\ramos\documents\visual studio 2015\Projects\CAD\CAD.Web\bin\Cad.Core.pdb
+C:\Users\ramos\documents\visual studio 2015\Projects\CAD\CAD.Web\bin\Antlr3.Runtime.dll
+C:\Users\ramos\documents\visual studio 2015\Projects\CAD\CAD.Web\bin\Newtonsoft.Json.dll
+C:\Users\ramos\documents\visual studio 2015\Projects\CAD\CAD.Web\bin\System.Web.Optimization.dll
+C:\Users\ramos\documents\visual studio 2015\Projects\CAD\CAD.Web\bin\WebGrease.dll
+C:\Users\ramos\documents\visual studio 2015\Projects\CAD\CAD.Web\bin\Antlr3.Runtime.pdb
+C:\Users\ramos\documents\visual studio 2015\Projects\CAD\CAD.Web\bin\Newtonsoft.Json.xml
+C:\Users\ramos\documents\visual studio 2015\Projects\CAD\CAD.Web\bin\System.Web.Optimization.xml

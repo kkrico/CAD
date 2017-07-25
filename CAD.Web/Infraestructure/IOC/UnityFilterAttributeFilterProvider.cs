@@ -6,11 +6,11 @@ namespace CAD.Web.Infraestructure.IOC
 {
     public class UnityFilterAttributeFilterProvider : FilterAttributeFilterProvider
     {
-        private readonly IUnityContainer container;
+        private readonly IUnityContainer _container;
 
         public UnityFilterAttributeFilterProvider(IUnityContainer container)
         {
-            this.container = container;
+            _container = container;
         }
 
         protected override IEnumerable<FilterAttribute> GetActionAttributes(ControllerContext controllerContext, ActionDescriptor actionDescriptor)
@@ -19,7 +19,7 @@ namespace CAD.Web.Infraestructure.IOC
 
             foreach (var item in list)
             {
-                this.container.BuildUp(item.GetType(), item);
+                this._container.BuildUp(item.GetType(), item);
             }
 
             return list;
@@ -31,7 +31,7 @@ namespace CAD.Web.Infraestructure.IOC
 
             foreach (var item in list)
             {
-                this.container.BuildUp(item.GetType(), item);
+                this._container.BuildUp(item.GetType(), item);
             }
 
             return list;

@@ -1,13 +1,21 @@
-﻿<!DOCTYPE html>
+﻿@using System.Web.Optimization
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
-    <meta name="description" content="The description of my page" />
+    <meta name="description" content="CAD" />
+    @Styles.Render("~/css")
+    @RenderSection("styles", required: false)
 </head>
 <body>
-    @RenderBody()
+    <div class="container">
+        @RenderBody()
+    </div>
+
+    @Scripts.Render("~/js")
+    @RenderSection("scripts", required: false)
 </body>
 </html>

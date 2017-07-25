@@ -9,7 +9,6 @@ namespace CAD.Web
         public static void ConfigureContainer(ControllerBuilder current)
         {
             RegisterContainer(current);
-
             FilterProviders.Providers.Add(new UnityFilterAttributeFilterProvider(UnityConfig.GetConfiguredContainer()));
         }
 

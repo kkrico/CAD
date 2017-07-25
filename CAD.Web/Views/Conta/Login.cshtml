@@ -1,1 +1,34 @@
-﻿
+﻿@using CAD.Web.Model
+@model LoginVM
+<div class="row meio">
+    @using (Html.BeginForm("Login", "Conta", FormMethod.Post))
+    {
+        <div class="col-sm-6 col-sm-offset-3 col-xs-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">Login - CADSYS</div>
+                <div class="panel-body">
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Login, new { @class = "control-label" })
+                        @Html.TextBoxFor(m => m.Login, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.Login)
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Senha, new { @class = "control-label" })
+                        @Html.PasswordFor(m => m.Senha, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.Senha)
+                    </div>
+                </div>
+                <div class="panel-footer">
+                    <div class="pull-left" style="margin-top: 0.5em;">
+                        @Html.LabelFor(m => m.LembrarSenha)
+                        @Html.CheckBoxFor(m => m.LembrarSenha)
+                    </div>
+                    <div class="pull-right">
+                        <input type="submit" class="btn btn-default btn-primary" value="Login" />
+                    </div>
+                    <div style="clear:both"></div>
+                </div>
+            </div>
+        </div>
+    }
+</div>
