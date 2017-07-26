@@ -40,11 +40,21 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Negocio\DTO\UsuarioDTO.cs" />
+    <Compile Include="Negocio\Mensagem\Mensagem.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Mensagem.resx</DependentUpon>
+    </Compile>
     <Compile Include="Negocio\Servico\Interface\IServicoConta.cs" />
     <Compile Include="Negocio\Servico\ServicoConta.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Negocio\Mensagem\Mensagem.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Mensagem.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

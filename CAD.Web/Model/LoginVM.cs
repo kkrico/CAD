@@ -1,3 +1,5 @@
+using Cad.Core.Negocio.Mensagem;
+using System;
 using System.ComponentModel.DataAnnotations;
 using System.Web.Mvc;
 
@@ -6,8 +8,8 @@ namespace CAD.Web.Model
     public class LoginVM
     {
         [Display(Name = "Login")]
-        [Required]
-        [CPF]
+        [Required(ErrorMessageResourceName = "M003", ErrorMessageResourceType = typeof(Mensagem))]
+        [CPF(ErrorMessageResourceName = "M011", ErrorMessageResourceType = typeof(Mensagem))]
         public string Login { get; set; }
 
         [Display(Name = "Senha")]
@@ -21,6 +23,7 @@ namespace CAD.Web.Model
         public bool LembrarSenha { get; set; }
     }
 
+    [AttributeUsage(AttributeTargets.Property | AttributeTargets.Field | AttributeTargets.Parameter, AllowMultiple = false)]
     public class CPFAttribute : ValidationAttribute
     {
         public override bool IsValid(object value)

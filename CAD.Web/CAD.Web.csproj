@@ -145,13 +145,14 @@
     <Compile Include="App_Start\UnityConfig.cs" />
     <Compile Include="Controllers\ContaController.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
-    <Compile Include="Infraestructure\IOC\AllClasses.cs" />
-    <Compile Include="Infraestructure\IOC\UnityFilterAttributeFilterProvider.cs" />
-    <Compile Include="Infraestructure\IOC\UnityControllerFactory.cs" />
+    <Compile Include="Infraestrutura\IOC\AllClasses.cs" />
+    <Compile Include="Infraestrutura\IOC\UnityFilterAttributeFilterProvider.cs" />
+    <Compile Include="Infraestrutura\IOC\UnityControllerFactory.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Infraestrutura\Seguranca\Providers\CADMembershipProvider.cs" />
     <Compile Include="Model\LoginVM.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
