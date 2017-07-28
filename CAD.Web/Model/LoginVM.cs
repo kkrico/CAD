@@ -1,7 +1,6 @@
 using Cad.Core.Negocio.Mensagem;
 using System;
 using System.ComponentModel.DataAnnotations;
-using System.Web.Mvc;
 
 namespace CAD.Web.Model
 {
@@ -16,8 +15,6 @@ namespace CAD.Web.Model
         [Required]
         public string Senha { get; set; }
 
-        [Compare("Senha")]
-        public string ConfirmacaoSenha { get; set; }
 
         [Display(Name = "Lembrar a senha?")]
         public bool LembrarSenha { get; set; }

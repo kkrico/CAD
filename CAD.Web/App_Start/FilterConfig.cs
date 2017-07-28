@@ -1,4 +1,5 @@
-﻿using System.Web.Mvc;
+﻿using CAD.Web.Infraestrutura.Seguranca.Filters;
+using System.Web.Mvc;
 
 namespace CAD.Web
 {
@@ -6,7 +7,8 @@ namespace CAD.Web
     {
         public static void RegisterGlobalFilters(GlobalFilterCollection filters)
         {
-
+            filters.Add(new GlobalErrorHandler());
+            filters.Add(new RestaurarViewDataAposExcecaoAttribute());
         }
     }
 }

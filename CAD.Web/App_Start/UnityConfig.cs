@@ -1,3 +1,4 @@
+using Cad.Core.Dados;
 using CAD.Web.Infraestructure.IOC;
 using Microsoft.Practices.Unity;
 using System;
@@ -29,7 +30,7 @@ namespace Cad.Web
 
         public static void RegisterTypes(IUnityContainer container)
         {
-
+            container.RegisterType<CADContext>(new HierarchicalLifetimeManager(), new InjectionConstructor());
         }
 
         private static void RegisterConventions(UnityContainer container, IEnumerable<Assembly> assemblies = null)

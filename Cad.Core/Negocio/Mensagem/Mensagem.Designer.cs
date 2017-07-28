@@ -61,6 +61,15 @@ namespace Cad.Core.Negocio.Mensagem {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Usuário ou senha inválido.
+        /// </summary>
+        public static string M001 {
+            get {
+                return ResourceManager.GetString("M001", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Campos obrigatórios em branco!.
         /// </summary>
         public static string M003 {

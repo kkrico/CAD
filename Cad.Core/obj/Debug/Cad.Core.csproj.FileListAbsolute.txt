@@ -5,3 +5,9 @@ C:\Users\ramos\documents\visual studio 2015\Projects\CAD\Cad.Core\obj\Debug\Cad.
 C:\Users\ramos\documents\visual studio 2015\Projects\CAD\Cad.Core\obj\Debug\Cad.Core.csprojResolveAssemblyReference.cache
 C:\Users\ramos\documents\visual studio 2015\Projects\CAD\Cad.Core\obj\Debug\Cad.Core.Negocio.Mensagem.Mensagem.resources
 C:\Users\ramos\documents\visual studio 2015\Projects\CAD\Cad.Core\obj\Debug\Cad.Core.csproj.GenerateResource.Cache
+C:\Users\ramos\documents\visual studio 2015\Projects\CAD\Cad.Core\bin\Debug\Cad.Core.dll.config
+C:\Users\ramos\documents\visual studio 2015\Projects\CAD\Cad.Core\bin\Debug\EntityFramework.dll
+C:\Users\ramos\documents\visual studio 2015\Projects\CAD\Cad.Core\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\ramos\documents\visual studio 2015\Projects\CAD\Cad.Core\bin\Debug\EntityFramework.xml
+C:\Users\ramos\documents\visual studio 2015\Projects\CAD\Cad.Core\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\ramos\documents\visual studio 2015\Projects\CAD\Cad.Core\obj\Debug\Cad.Core.Migrations.inicial.resources

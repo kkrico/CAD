@@ -1,5 +1,6 @@
 using Cad.Web;
 using CAD.Web.Infraestructure.IOC;
+using CAD.Web.Infraestrutura.IOC;
 using System.Web.Mvc;
 
 namespace CAD.Web

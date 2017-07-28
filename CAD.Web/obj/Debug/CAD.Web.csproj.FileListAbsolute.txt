@@ -33,3 +33,7 @@ C:\Users\ramos\documents\visual studio 2015\Projects\CAD\CAD.Web\bin\WebGrease.d
 C:\Users\ramos\documents\visual studio 2015\Projects\CAD\CAD.Web\bin\Antlr3.Runtime.pdb
 C:\Users\ramos\documents\visual studio 2015\Projects\CAD\CAD.Web\bin\Newtonsoft.Json.xml
 C:\Users\ramos\documents\visual studio 2015\Projects\CAD\CAD.Web\bin\System.Web.Optimization.xml
+C:\Users\ramos\documents\visual studio 2015\Projects\CAD\CAD.Web\bin\EntityFramework.dll
+C:\Users\ramos\documents\visual studio 2015\Projects\CAD\CAD.Web\bin\EntityFramework.xml
+C:\Users\ramos\documents\visual studio 2015\Projects\CAD\CAD.Web\bin\EntityFramework.SqlServer.dll
+C:\Users\ramos\documents\visual studio 2015\Projects\CAD\CAD.Web\bin\EntityFramework.SqlServer.xml

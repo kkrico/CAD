@@ -33,10 +33,10 @@ namespace CAD.Web.Controllers.Test
             var view = ctr.Login(new LoginVM()) as ViewResult;
         }
 
-        private static ContaController GetContaController(Mock<IServicoConta> mockServicoConta = null)
+        private static ContaController GetContaController(Mock<IServicoUsuario> mockServicoConta = null)
         {
             if (mockServicoConta == null)
-                mockServicoConta = new Mock<IServicoConta>();
+                mockServicoConta = new Mock<IServicoUsuario>();
 
             var ctrl = new ContaController(mockServicoConta.Object)
             {
@@ -49,7 +49,7 @@ namespace CAD.Web.Controllers.Test
         [TestMethod]
         public void LoginController_DeveTer_LoginObrigatorio()
         {
-            var mockServicoConta = new Mock<IServicoConta>();
+            var mockServicoConta = new Mock<IServicoUsuario>();
             var ctrl = GetContaController(mockServicoConta);
 
             var form = new FormCollection
