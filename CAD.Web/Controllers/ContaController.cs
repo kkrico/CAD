@@ -1,21 +1,20 @@
-﻿using Cad.Core.Negocio.Exception;
-using Cad.Core.Negocio.Mensagem;
-using Cad.Core.Negocio.Servico.Interface;
-using CAD.Web.Model;
+﻿using CAD.Web.Model;
+using System.Configuration;
 using System.Web.Mvc;
-using System.Web.Security;
 
 namespace CAD.Web.Controllers
 {
     public class ContaController : Controller
     {
-        private readonly IServicoUsuario _servicoUsuario;
+        private readonly IServicoCADMembership _membership;
+        private readonly IConfigurationReader _configurationReader;
         private readonly RepositorioTempData _repositorioTempData;
         private const string ReturnUrl = "ReturnUrl";
 
-        public ContaController(IServicoUsuario servicoUsuario)
+        public ContaController(IServicoCADMembership membership, IConfigurationReader configurationReader)
         {
-            _servicoUsuario = servicoUsuario;
+            _membership = membership;
+            _configurationReader = configurationReader;
             _repositorioTempData = new RepositorioTempData(TempData);
         }
 
@@ -31,12 +30,10 @@ namespace CAD.Web.Controllers
         {
             if (!ModelState.IsValid) return View("Login");
 
-            var isValido = Membership.ValidateUser(model.Login, model.Senha);
-
-            if (!isValido) throw new NegocioException(Mensagem.M001);
+            _membership.Autenticar(model.Login, model.Senha);
 
             var returnUrl = _repositorioTempData.Buscar<string>(ReturnUrl);
-            return Redirect(returnUrl ?? "http://google.com.br");
+            return Redirect(returnUrl ?? _configurationReader.GetAppSetting(ReturnUrl));
         }
 
         [HttpGet, Authorize]
@@ -44,6 +41,24 @@ namespace CAD.Web.Controllers
         {
             return View();
         }
+    }
+
+    public interface IConfigurationReader
+    {
+        string GetAppSetting(string key);
+    }
+
+    public class ConfigurationReader : IConfigurationReader
+    {
+        public string GetAppSetting(string key)
+        {
+            return ConfigurationManager.AppSettings[key].ToString();
+        }
+    }
+
+    public interface IServicoCADMembership
+    {
+        void Autenticar(string login, string senha);
     }
 
     public class RepositorioTempData

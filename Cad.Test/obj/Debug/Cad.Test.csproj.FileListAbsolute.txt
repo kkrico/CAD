@@ -32,3 +32,5 @@ C:\Users\ramos\documents\visual studio 2015\Projects\CAD\Cad.Test\bin\Debug\Cad.
 C:\Users\ramos\documents\visual studio 2015\Projects\CAD\Cad.Test\bin\Debug\Cad.Test.dll.config
 C:\Users\ramos\documents\visual studio 2015\Projects\CAD\Cad.Test\bin\Debug\System.Web.Optimization.dll
 C:\Users\ramos\documents\visual studio 2015\Projects\CAD\Cad.Test\bin\Debug\System.Web.Optimization.xml
+C:\Users\ramos\documents\visual studio 2015\Projects\CAD\Cad.Test\bin\Debug\EntityFramework.dll
+C:\Users\ramos\documents\visual studio 2015\Projects\CAD\Cad.Test\bin\Debug\EntityFramework.xml

@@ -1,11 +1,19 @@
 ﻿using Cad.Core.Negocio.DTO;
-using Cad.Core.Negocio.Exception;
 using Cad.Core.Negocio.Servico.Interface;
 using Cad.Web;
+using CAD.Web.Controllers;
 using System.Web.Security;
 
 namespace CAD.Web.Infraestrutura.Seguranca.Providers
 {
+    public class ServicoCADMembership : IServicoCADMembership
+    {
+        public void Autenticar(string login, string senha)
+        {
+            Membership.ValidateUser(login, senha);
+        }
+    }
+
     public class CADMembershipProvider : MembershipProvider
     {
         private readonly IServicoUsuario _servicoUsuario;
@@ -55,15 +63,7 @@ namespace CAD.Web.Infraestrutura.Seguranca.Providers
         public override bool ValidateUser(string username, string password)
         {
             var usuarioDTO = new UsuarioDTO(username, password);
-            try
-            {
-                _servicoUsuario.Autenticar(usuarioDTO);
-            }
-            catch (NegocioException)
-            {
-                return false;
-            }
-
+            _servicoUsuario.Autenticar(usuarioDTO);
             return true;
         }
 
