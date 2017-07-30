@@ -15,5 +15,6 @@ namespace Cad.Core.Negocio.DTO
 
         public string Login { get; set; }
         public string Senha { get; set; }
+        public bool LembrarSenha { get; set; }
     }
 }

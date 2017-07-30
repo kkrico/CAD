@@ -29,6 +29,8 @@ namespace Cad.Core.Negocio.Servico
 
             if (!usuarioEncontrado)
                 throw new NegocioException("Usuário inválido ou não encontrado");
+
+            FormsAuthentication.SetAuthCookie(usuario.Login, usuario.LembrarSenha);
         }
     }
 }

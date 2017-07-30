@@ -151,8 +151,11 @@
     <Compile Include="App_Start\IOC.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\UnityConfig.cs" />
+    <Compile Include="Controllers\ConfigurationReader.cs" />
     <Compile Include="Controllers\ContaController.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="Infraestrutura\MVC\CPFAttribute.cs" />
+    <Compile Include="Infraestrutura\MVC\RepositorioTempData.cs" />
     <Compile Include="Infraestrutura\IOC\AllClasses.cs" />
     <Compile Include="Infraestrutura\IOC\UnityFilterAttributeFilterProvider.cs" />
     <Compile Include="Infraestrutura\IOC\UnityControllerFactory.cs" />
@@ -161,7 +164,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Infraestrutura\Seguranca\Filters\GlobalErrorHandler.cs" />
-    <Compile Include="Infraestrutura\Seguranca\Providers\CADMembershipProvider.cs" />
+    <Compile Include="Infraestrutura\Seguranca\Interfaces\IConfigurationReader.cs" />
     <Compile Include="Model\LoginVM.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

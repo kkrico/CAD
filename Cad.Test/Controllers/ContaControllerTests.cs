@@ -1,6 +1,10 @@
-﻿using Cad.Core.Negocio.Exception;
+﻿using Cad.Core.Negocio.DTO;
+using Cad.Core.Negocio.Exception;
 using Cad.Core.Negocio.Mensagem;
+using Cad.Core.Negocio.Servico.Interface;
 using Cad.Test.Util;
+using CAD.Web.Infraestrutura.MVC;
+using CAD.Web.Infraestrutura.Seguranca.Interfaces;
 using CAD.Web.Model;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
@@ -26,30 +30,24 @@ namespace CAD.Web.Controllers.Test
             Assert.AreEqual("Login", view.ViewName);
         }
 
+
         [TestMethod]
         [TestCategory("Controllers")]
-        public void Login_Com_Usuario_Senha()
+        public void Login_Guarda_ReturnUrl()
         {
-            var mockMember = new Mock<IServicoCADMembership>();
-            mockMember.Setup(s => s.Autenticar("01614865175", "123456")).Throws(new NegocioException(Mensagem.M001));
+            var mockTempData = new Mock<IRepositorioTempData>();
+            var ctr = GetContaController(mockTempData);
+            var url = "/Conta/AreaAutorizada";
+            var view = ctr.Login(url) as ViewResult;
 
-            var ctr = GetContaController(mockMember);
-            var form = new FormCollection
-            {
-                { nameof(LoginVM.Login), "68880928104" },
-                { nameof(LoginVM.Senha), "123456" },
-            };
-
-            var model = ModelBinderUtil.BindModel<LoginVM>(ctr, form);
-            var res = ctr.Login(model) as RedirectResult;
-
-            Assert.IsNotNull(res);
-            Assert.AreEqual(res.Url, ReturnedUrl);
-            Assert.IsFalse(res.Permanent);
+            Assert.IsNotNull(view);
+            Assert.AreEqual("Login", view.ViewName);
+            mockTempData.Verify(x => x.Adicionar(ReturnUrl, url), Times.Once());
         }
 
         [TestMethod]
-        public void LoginController_DeveTer_LoginObrigatorio()
+        [TestCategory("Controllers")]
+        public void Login_DeveSer_Obrigatorio()
         {
             var ctrl = GetContaController();
 
@@ -63,12 +61,36 @@ namespace CAD.Web.Controllers.Test
 
             var view = ctrl.Login(model) as ViewResult;
 
+            Assert.IsFalse(ctrl.ModelState.IsValid);
             Assert.IsTrue(ctrl.ModelState["Login"].Errors.Any(m => m.ErrorMessage == Mensagem.M003));
             Assert.IsNotNull(view);
             Assert.AreEqual("Login", view.ViewName);
         }
 
         [TestMethod]
+        [TestCategory("Controllers")]
+        public void Senha_DeveSer_Obrigatorio()
+        {
+            var ctrl = GetContaController();
+
+            var form = new FormCollection
+            {
+                { nameof(LoginVM.Login), "01614865175" },
+            };
+
+
+            var model = ModelBinderUtil.BindModel<LoginVM>(ctrl, form);
+
+            var view = ctrl.Login(model) as ViewResult;
+
+            Assert.IsFalse(ctrl.ModelState.IsValid);
+            Assert.IsTrue(ctrl.ModelState["Senha"].Errors.Any(m => m.ErrorMessage == Mensagem.M003));
+            Assert.IsNotNull(view);
+            Assert.AreEqual("Login", view.ViewName);
+        }
+
+        [TestMethod]
+        [TestCategory("Controllers")]
         public void Login_DeveSer_CPF()
         {
             var ctr = GetContaController();
@@ -86,15 +108,99 @@ namespace CAD.Web.Controllers.Test
             Assert.AreEqual("Login", view.ViewName);
         }
 
-        private static ContaController GetContaController(Mock<IServicoCADMembership> mockMembership = null)
+        [TestMethod]
+        [TestCategory("Controllers")]
+        [ExpectedException(typeof(NegocioException))]
+        public void Login_Invalido_Lanca_Excecao()
         {
-            if (mockMembership == null)
-                mockMembership = new Mock<IServicoCADMembership>();
+            var mockServicoUsuario = new Mock<IServicoUsuario>();
+            mockServicoUsuario.Setup(x => x.Autenticar(It.IsAny<UsuarioDTO>()))
+                .Throws(new NegocioException(Mensagem.M001));
+            var ctr = GetContaController(mockServicoUsuario);
+            var form = new FormCollection
+            {
+                { nameof(LoginVM.Login), "01614865175" },
+                { nameof(LoginVM.Senha), "1234567890" },
+            };
+
+            var model = ModelBinderUtil.BindModel<LoginVM>(ctr, form);
+            ctr.Login(model);
+        }
+
+        [TestMethod]
+        [TestCategory("Controllers")]
+        public void Login_Valido_Redireciona_DeVoltaPadrao_Se_NaoInformar_URÇ()
+        {
+            var mockServicoUsuario = new Mock<IServicoUsuario>();
+            var ctr = GetContaController(mockServicoUsuario);
+            var form = new FormCollection
+            {
+                { nameof(LoginVM.Login), "01614865175" },
+                { nameof(LoginVM.Senha), "1234567890" },
+            };
+
+            var model = ModelBinderUtil.BindModel<LoginVM>(ctr, form);
+            var view = ctr.Login(model) as RedirectResult;
+
+            mockServicoUsuario.Verify(m => m.Autenticar(It.IsAny<UsuarioDTO>()), Times.Once());
+            Assert.IsNotNull(view);
+            Assert.IsTrue(view.Url == ReturnedUrl);
+        }
+
+        [TestMethod]
+        [TestCategory("Controllers")]
+        public void Login_Valido_Redireciona_Url_Temp_Data()
+        {
+            const string urlTempData = "/home/arearestrita";
+            var mockServicoUsuario = new Mock<IServicoUsuario>();
+            var mockTempData = new Mock<IRepositorioTempData>();
+            mockTempData.Setup(x => x.Buscar<string>(ReturnUrl)).Returns(urlTempData);
+            var ctr = GetContaController(mockServicoUsuario, mockTempData);
+            var form = new FormCollection
+            {
+                { nameof(LoginVM.Login), "01614865175" },
+                { nameof(LoginVM.Senha), "1234567890" },
+            };
+
+            var model = ModelBinderUtil.BindModel<LoginVM>(ctr, form);
+            var view = ctr.Login(model) as RedirectResult;
+
+            mockServicoUsuario.Verify(m => m.Autenticar(It.IsAny<UsuarioDTO>()), Times.Once());
+            Assert.IsNotNull(view);
+            Assert.IsTrue(view.Url == urlTempData);
+        }
+
+        private static ContaController GetContaController()
+        {
+            var mockTempData = new Mock<IRepositorioTempData>();
+            var mockServicoUsuario = new Mock<IServicoUsuario>();
+
+            return GetContaController(mockServicoUsuario, mockTempData);
+        }
+
+        private static ContaController GetContaController(Mock<IRepositorioTempData> tempMock)
+        {
+            return GetContaController(new Mock<IServicoUsuario>(), tempMock);
+        }
+
+        private static ContaController GetContaController(Mock<IServicoUsuario> servicoUsuario)
+        {
+            return GetContaController(servicoUsuario, new Mock<IRepositorioTempData>());
+        }
+
+        private static ContaController GetContaController(Mock<IServicoUsuario> servicoUsuario, Mock<IRepositorioTempData> mockTempData)
+        {
+            if (servicoUsuario == null)
+                servicoUsuario = new Mock<IServicoUsuario>();
+
+            if (mockTempData == null)
+                mockTempData = new Mock<IRepositorioTempData>();
 
             var mockReader = new Mock<IConfigurationReader>();
             mockReader.Setup(x => x.GetAppSetting(ReturnUrl)).Returns(ReturnedUrl);
 
-            var ctrl = new ContaController(mockMembership.Object, mockReader.Object)
+
+            var ctrl = new ContaController(mockReader.Object, servicoUsuario.Object, mockTempData.Object)
             {
                 ControllerContext = new ControllerContext()
             };
