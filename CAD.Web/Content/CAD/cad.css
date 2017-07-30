@@ -1,6 +1,11 @@
-﻿body {
-    background-image: url("https://wallpapers.wallhaven.cc/wallpapers/full/wallhaven-518338.png");
+﻿.meio {
+    margin-top: 10em;
 }
-.meio {
-    margin-top: 4em;
+
+.validation-summary-errors.alert.alert-danger ul {
+    padding-left: 1em;
 }
+
+    .validation-summary-errors.alert.alert-danger ul li {
+        list-style-type: none;
+    }
