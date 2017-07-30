@@ -1,6 +1,5 @@
 ﻿using Cad.Core.Negocio.Servico.Interface;
-using CAD.Web.Infraestrutura.MVC;
-using CAD.Web.Infraestrutura.Seguranca.Interfaces;
+using CAD.Web.Infraestrutura.Interface;
 using CAD.Web.Model;
 using System.Web.Mvc;
 
@@ -9,21 +8,21 @@ namespace CAD.Web.Controllers
     public class ContaController : Controller
     {
         private readonly IConfigurationReader _configurationReader;
-        private readonly IServicoUsuario _servicoUsuario;
-        private readonly IRepositorioTempData _repositorioTempData;
+        private readonly IUsuarioServico _usuarioServico;
+        private readonly ITempDataServico _tempDataServico;
         private const string ReturnUrl = "ReturnUrl";
 
-        public ContaController(IConfigurationReader configurationReader, IServicoUsuario servicoUsuario, IRepositorioTempData tempData)
+        public ContaController(IConfigurationReader configurationReader, IUsuarioServico usuarioServico, ITempDataServico tempDataServico)
         {
             _configurationReader = configurationReader;
-            _servicoUsuario = servicoUsuario;
-            _repositorioTempData = tempData;
+            _usuarioServico = usuarioServico;
+            _tempDataServico = tempDataServico;
         }
 
         [HttpGet]
         public ActionResult Login(string returnUrl = null)
         {
-            _repositorioTempData.Adicionar(ReturnUrl, returnUrl);
+            _tempDataServico.Adicionar(ReturnUrl, returnUrl);
             return View("Login");
         }
 
@@ -33,9 +32,9 @@ namespace CAD.Web.Controllers
             if (!ModelState.IsValid) return View("Login");
 
             var dto = LoginVM.Converter(model);
-            _servicoUsuario.Autenticar(dto);
+            _usuarioServico.Autenticar(dto);
 
-            var returnUrl = _repositorioTempData.Buscar<string>(ReturnUrl);
+            var returnUrl = _tempDataServico.Buscar<string>(ReturnUrl);
             return Redirect(string.IsNullOrEmpty(returnUrl) ? _configurationReader.GetAppSetting(ReturnUrl) : returnUrl);
         }
 

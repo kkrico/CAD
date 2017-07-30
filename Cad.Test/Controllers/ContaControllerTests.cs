@@ -3,8 +3,7 @@ using Cad.Core.Negocio.Exception;
 using Cad.Core.Negocio.Mensagem;
 using Cad.Core.Negocio.Servico.Interface;
 using Cad.Test.Util;
-using CAD.Web.Infraestrutura.MVC;
-using CAD.Web.Infraestrutura.Seguranca.Interfaces;
+using CAD.Web.Infraestrutura.Interface;
 using CAD.Web.Model;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
@@ -35,7 +34,7 @@ namespace CAD.Web.Controllers.Test
         [TestCategory("Controllers")]
         public void Login_Guarda_ReturnUrl()
         {
-            var mockTempData = new Mock<IRepositorioTempData>();
+            var mockTempData = new Mock<ITempDataServico>();
             var ctr = GetContaController(mockTempData);
             var url = "/Conta/AreaAutorizada";
             var view = ctr.Login(url) as ViewResult;
@@ -113,7 +112,7 @@ namespace CAD.Web.Controllers.Test
         [ExpectedException(typeof(NegocioException))]
         public void Login_Invalido_Lanca_Excecao()
         {
-            var mockServicoUsuario = new Mock<IServicoUsuario>();
+            var mockServicoUsuario = new Mock<IUsuarioServico>();
             mockServicoUsuario.Setup(x => x.Autenticar(It.IsAny<UsuarioDTO>()))
                 .Throws(new NegocioException(Mensagem.M001));
             var ctr = GetContaController(mockServicoUsuario);
@@ -131,7 +130,7 @@ namespace CAD.Web.Controllers.Test
         [TestCategory("Controllers")]
         public void Login_Valido_Redireciona_DeVoltaPadrao_Se_NaoInformar_URÇ()
         {
-            var mockServicoUsuario = new Mock<IServicoUsuario>();
+            var mockServicoUsuario = new Mock<IUsuarioServico>();
             var ctr = GetContaController(mockServicoUsuario);
             var form = new FormCollection
             {
@@ -152,8 +151,8 @@ namespace CAD.Web.Controllers.Test
         public void Login_Valido_Redireciona_Url_Temp_Data()
         {
             const string urlTempData = "/home/arearestrita";
-            var mockServicoUsuario = new Mock<IServicoUsuario>();
-            var mockTempData = new Mock<IRepositorioTempData>();
+            var mockServicoUsuario = new Mock<IUsuarioServico>();
+            var mockTempData = new Mock<ITempDataServico>();
             mockTempData.Setup(x => x.Buscar<string>(ReturnUrl)).Returns(urlTempData);
             var ctr = GetContaController(mockServicoUsuario, mockTempData);
             var form = new FormCollection
@@ -172,29 +171,29 @@ namespace CAD.Web.Controllers.Test
 
         private static ContaController GetContaController()
         {
-            var mockTempData = new Mock<IRepositorioTempData>();
-            var mockServicoUsuario = new Mock<IServicoUsuario>();
+            var mockTempData = new Mock<ITempDataServico>();
+            var mockServicoUsuario = new Mock<IUsuarioServico>();
 
             return GetContaController(mockServicoUsuario, mockTempData);
         }
 
-        private static ContaController GetContaController(Mock<IRepositorioTempData> tempMock)
+        private static ContaController GetContaController(Mock<ITempDataServico> tempMock)
         {
-            return GetContaController(new Mock<IServicoUsuario>(), tempMock);
+            return GetContaController(new Mock<IUsuarioServico>(), tempMock);
         }
 
-        private static ContaController GetContaController(Mock<IServicoUsuario> servicoUsuario)
+        private static ContaController GetContaController(Mock<IUsuarioServico> servicoUsuario)
         {
-            return GetContaController(servicoUsuario, new Mock<IRepositorioTempData>());
+            return GetContaController(servicoUsuario, new Mock<ITempDataServico>());
         }
 
-        private static ContaController GetContaController(Mock<IServicoUsuario> servicoUsuario, Mock<IRepositorioTempData> mockTempData)
+        private static ContaController GetContaController(Mock<IUsuarioServico> servicoUsuario, Mock<ITempDataServico> mockTempData)
         {
             if (servicoUsuario == null)
-                servicoUsuario = new Mock<IServicoUsuario>();
+                servicoUsuario = new Mock<IUsuarioServico>();
 
             if (mockTempData == null)
-                mockTempData = new Mock<IRepositorioTempData>();
+                mockTempData = new Mock<ITempDataServico>();
 
             var mockReader = new Mock<IConfigurationReader>();
             mockReader.Setup(x => x.GetAppSetting(ReturnUrl)).Returns(ReturnedUrl);

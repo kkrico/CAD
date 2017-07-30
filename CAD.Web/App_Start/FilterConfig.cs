@@ -7,8 +7,8 @@ namespace CAD.Web
     {
         public static void RegisterGlobalFilters(GlobalFilterCollection filters)
         {
-            filters.Add(new GlobalErrorHandler());
-            filters.Add(new RestaurarViewDataAposExcecaoAttribute());
+            filters.Add(new GlobalErrorHandlerAttribute());
+            filters.Add(new RestaurarViewDataAttribute());
         }
     }
 }

@@ -1,15 +1,18 @@
 using Cad.Web;
-using CAD.Web.Infraestructure.IOC;
 using CAD.Web.Infraestrutura.IOC;
 using System.Web.Mvc;
 
 namespace CAD.Web
 {
-    public class IOC
+    public class IOCConfig
     {
-        public static void ConfigureContainer(ControllerBuilder current)
+        public static void RegisterContainers(ControllerBuilder current)
         {
             RegisterContainer(current);
+        }
+
+        public static void RegisterFilters()
+        {
             FilterProviders.Providers.Add(new UnityFilterAttributeFilterProvider(UnityConfig.GetConfiguredContainer()));
         }
 
@@ -21,7 +24,7 @@ namespace CAD.Web
             current.SetControllerFactory(controllerFactory);
         }
 
-        public static void ShutdownContainers()
+        public static void DisposeContainers()
         {
             var container = UnityConfig.GetConfiguredContainer();
 

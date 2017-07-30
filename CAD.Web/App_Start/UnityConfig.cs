@@ -1,5 +1,5 @@
 using Cad.Core.Dados;
-using CAD.Web.Infraestructure.IOC;
+using CAD.Web.Infraestrutura.IOC;
 using Microsoft.Practices.Unity;
 using System;
 using System.Collections.Generic;

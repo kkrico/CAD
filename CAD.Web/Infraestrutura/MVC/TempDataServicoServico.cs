@@ -1,19 +1,12 @@
+using CAD.Web.Infraestrutura.Interface;
 using System.Web.Mvc;
 
 namespace CAD.Web.Infraestrutura.MVC
 {
-    public interface IRepositorioTempData
-    {
-        void Adicionar(string key, object valor);
-        void Excluir(string key);
-        object Buscar(string key);
-        T Buscar<T>(string key);
-    }
-
-    public class RepositorioTempData : IRepositorioTempData
+    public class TempDataServicoServico : ITempDataServico
     {
         private readonly TempDataDictionary _tempData;
-        public RepositorioTempData(TempDataDictionary tempData)
+        public TempDataServicoServico(TempDataDictionary tempData)
         {
             _tempData = tempData;
         }

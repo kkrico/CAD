@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Web.Mvc;
 
-namespace CAD.Web.Infraestructure.IOC
+namespace CAD.Web.Infraestrutura.IOC
 {
     public class UnityFilterAttributeFilterProvider : FilterAttributeFilterProvider
     {

@@ -1,5 +1,5 @@
+using CAD.Web.Infraestrutura.Interface;
 using System.Configuration;
-using CAD.Web.Infraestrutura.Seguranca.Interfaces;
 
 namespace CAD.Web.Controllers
 {

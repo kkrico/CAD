@@ -148,14 +148,16 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="App_Start\IOC.cs" />
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\IOCConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\UnityConfig.cs" />
     <Compile Include="Controllers\ConfigurationReader.cs" />
     <Compile Include="Controllers\ContaController.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="Infraestrutura\MVC\CPFAttribute.cs" />
-    <Compile Include="Infraestrutura\MVC\RepositorioTempData.cs" />
+    <Compile Include="Infraestrutura\Interface\ITempDataServico.cs" />
+    <Compile Include="Infraestrutura\MVC\TempDataServicoServico.cs" />
     <Compile Include="Infraestrutura\IOC\AllClasses.cs" />
     <Compile Include="Infraestrutura\IOC\UnityFilterAttributeFilterProvider.cs" />
     <Compile Include="Infraestrutura\IOC\UnityControllerFactory.cs" />
@@ -163,8 +165,10 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Infraestrutura\Seguranca\Filters\GlobalErrorHandler.cs" />
-    <Compile Include="Infraestrutura\Seguranca\Interfaces\IConfigurationReader.cs" />
+    <Compile Include="Infraestrutura\Seguranca\Filters\GlobalErrorHandlerAttribute.cs" />
+    <Compile Include="Infraestrutura\Seguranca\Filters\RestaurarViewDataAttribute.cs" />
+    <Compile Include="Infraestrutura\Extensions\UriExtensions.cs" />
+    <Compile Include="Infraestrutura\Interface\IConfigurationReader.cs" />
     <Compile Include="Model\LoginVM.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

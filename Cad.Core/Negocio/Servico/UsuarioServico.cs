@@ -10,11 +10,11 @@ using System.Web.Security;
 
 namespace Cad.Core.Negocio.Servico
 {
-    public class ServicoUsuario : IServicoUsuario
+    public class UsuarioServico : IUsuarioServico
     {
         private readonly Repositorio<Usuario> _repositorioUsuario;
 
-        public ServicoUsuario(CADContext context)
+        public UsuarioServico(CADContext context)
         {
             _repositorioUsuario = new Repositorio<Usuario>(context);
         }

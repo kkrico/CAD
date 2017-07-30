@@ -1,13 +1,13 @@
+using Microsoft.Practices.Unity;
+using Microsoft.Practices.Unity.Utility;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Security;
-using Microsoft.Practices.Unity;
-using Microsoft.Practices.Unity.Utility;
 
-namespace CAD.Web.Infraestructure.IOC
+namespace CAD.Web.Infraestrutura.IOC
 {
     public class AllClasses
     {
