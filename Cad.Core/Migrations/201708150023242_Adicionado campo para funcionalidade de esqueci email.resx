@@ -117,16 +117,10 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="M001" xml:space="preserve">
-    <value>Usuário ou senha inválido</value>
+  <data name="Target" xml:space="preserve">
+    <value>H4sIAAAAAAAEAM1X227jNhB9L9B/EPicFXNBgTaQd+G1k9ZoHAdRvO9jaWwTpUhVpIL42/ahn9Rf6NCmLpYvcYK0KPISkTNnzgzn5r+//xV9eclk8IyFEVr12EV4zgJUiU6FWvRYaeeffmZfPv/4Q3STZi/Bt0ruysmRpjI9trQ2v+bcJEvMwISZSApt9NyGic44pJpfnp//wi8uOBIEI6wgiB5LZUWG6w/6HGiVYG5LkGOdojT+nG7iNWpwDxmaHBLssQGk4UAXGA4J27CgLwUQixjlnAWglLZgieP11GBsC60WcU4HIJ9WOZLcHKRBz/26ET/VjfNL5wZvFCuopDRWZ28EvLjyceFd9XdFl9Vxo8jdUITtynm9jl6PTU0JhdAs6Nq6HsjCyXVjGzqIFFI0odc9CyqJszoXKGXcH12V0pYF9hSWtgB5FjyUMymS33H1pP9A1VOllG2GxJHutg7o6KHQORZ29Yhzz3uUsoBv6/GuYq3W0tm4NFL26pIF92QcZhLrBGi5H1ty6FdUWIDF9AGsxUI5DFyHcMd6x9adXghVmaOUo8phwRhe7lAt7LLHfqJSuRUvmFYHnsFUCaoz0rFFia8ZiVEt4d828huYviTnIQG9ZfCr1hJB7QljGzDiTc7tZiLVuAVBQfbGBv2hO8IXuycjqXh9UhpPfZv4BjJGu53b1A4aCpueENZpv49qTarpOHzTcqrWxA/0pmgMeU6v0OpV/iSIfaP6FL+9irMNBk/MnmKu2daWKHNhgZ1bMk1Mb0Vh7BAszMA91CDNdsWaJzgQ3spQJ8rdom2CXim4//07b/eU6jk6EE34bsmjjCpv7RzWTJr+taO5HhMgodjTBAZalpk61EiOafuybgP4o9MxfBG1MfzR6Rh7irKNt+d6FzvineB2H5DvvGCn4XYz4lgtdUVq63VNdWon8nl8wvDvJvZGhAUUtGeRuqSOV8ZiFjqBMP5TDqQgfxuBMSgxR2M3M4nRDL7s7BD/n3nOjUnlaUP9P5+rwgX11cl5dF68MkqfoUiWUOyMuQbzzYPzYyAPjsmZsB87Infa+ElT8NgQ3NRLj6Uz+nja8JzG0/7jaPLuCblbvRFvL/jREI1YNBBu3VeYuLJoQCuZkZrrKt7kWZtRJdJ5jjFaSClA/cKKOSSWrhM0Zr0hfQNZkshNNsN0pCalzUvbNwazmdza6yJ+3P56DdjmHE1y92U+wgWiSYu2xYn6WgqZ1rxv92TQAQiXK74SiRVtiAS3WNVI91qdCOTDN8QclavjJ8xySWBmomJ4xvdwo23uDheQrKomfBjk9YfYDns0FLAoIDMeo9F3P1q5+9X6+R9ppHRZ5w4AAA==</value>
   </data>
-  <data name="M003" xml:space="preserve">
-    <value>Campos obrigatórios em branco!</value>
-  </data>
-  <data name="M011" xml:space="preserve">
-    <value>CPF Inválido</value>
-  </data>
-  <data name="M012" xml:space="preserve">
-    <value>Foi enviado um email com o pedido de alteração de senha. Acesse seu email para alterar a senha</value>
+  <data name="DefaultSchema" xml:space="preserve">
+    <value>dbo</value>
   </data>
 </root>

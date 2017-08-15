@@ -11,3 +11,5 @@ C:\Users\ramos\documents\visual studio 2015\Projects\CAD\Cad.Core\bin\Debug\Enti
 C:\Users\ramos\documents\visual studio 2015\Projects\CAD\Cad.Core\bin\Debug\EntityFramework.xml
 C:\Users\ramos\documents\visual studio 2015\Projects\CAD\Cad.Core\bin\Debug\EntityFramework.SqlServer.xml
 C:\Users\ramos\documents\visual studio 2015\Projects\CAD\Cad.Core\obj\Debug\Cad.Core.Migrations.inicial.resources
+C:\Users\ramos\documents\visual studio 2015\Projects\CAD\Cad.Core\obj\Debug\Cad.Core.Negocio.Recursos.Email.resources
+C:\Users\ramos\documents\visual studio 2015\Projects\CAD\Cad.Core\obj\Debug\Cad.Core.Migrations.Adicionadocampoparafuncionalidadedeesqueciemail.resources

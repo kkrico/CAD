@@ -8,45 +8,45 @@ namespace Cad.Core.Dados.Repositorio
 {
     public class Repositorio<TEntidade> : IRepositorio<TEntidade> where TEntidade : class, IEntidade
     {
-        protected CADContext _context;
-        protected DbSet<TEntidade> _set;
+        protected CADContext Context;
+        protected DbSet<TEntidade> Set;
 
         public Repositorio()
         {
-            _context = new CADContext();
-            _set = _context.Set<TEntidade>();
+            Context = new CADContext();
+            Set = Context.Set<TEntidade>();
         }
 
         public Repositorio(CADContext contexto)
         {
-            _context = contexto;
-            _set = _context.Set<TEntidade>();
+            Context = contexto;
+            Set = Context.Set<TEntidade>();
         }
 
         public virtual TEntidade Obter(int id)
         {
-            return _set.Find(id);
+            return Set.Find(id);
         }
 
         public virtual TEntidade Obter(Expression<Func<TEntidade, bool>> criterio)
         {
-            return _set.Where(criterio).FirstOrDefault();
+            return Set.Where(criterio).FirstOrDefault();
         }
 
         public virtual TEntidade ObterUltimo(Expression<Func<TEntidade, bool>> criterio)
         {
-            return _set.Where(criterio).OrderByDescending(a => a.Id).FirstOrDefault();
+            return Set.Where(criterio).OrderByDescending(a => a.Id).FirstOrDefault();
         }
 
         public IQueryable<TEntidade> Buscar(Expression<Func<TEntidade, bool>> criterio,
             Func<TEntidade, object> ordenarPor = null,
             params Expression<Func<TEntidade, object>>[] propriedadesDeNavegacao)
         {
-            IQueryable<TEntidade> set = _set;
+            IQueryable<TEntidade> set = Set;
 
             IncluirPropriedadesNaQuery(propriedadesDeNavegacao, set);
 
-            IQueryable<TEntidade> resultado = ordenarPor != null ?
+            var resultado = ordenarPor != null ?
                 set.Where(criterio).OrderBy(ordenarPor).AsQueryable() :
                 set.Where(criterio).AsQueryable();
 
@@ -56,22 +56,22 @@ namespace Cad.Core.Dados.Repositorio
 
         public IQueryable<TEntidade> Todos()
         {
-            return _set;
+            return Set;
         }
 
         public bool Existe(int id)
         {
-            return _set.Any(a => a.Id == id);
+            return Set.Any(a => a.Id == id);
         }
 
         public bool Existe(Expression<Func<TEntidade, bool>> criterio)
         {
-            return _set.Any(criterio);
+            return Set.Any(criterio);
         }
 
         public int Contar(Expression<Func<TEntidade, bool>> criterio)
         {
-            return _set.Count(criterio);
+            return Set.Count(criterio);
         }
 
         private void IncluirPropriedadesNaQuery(Expression<Func<TEntidade, object>>[] propriedadesDeNavegacao, IQueryable<TEntidade> entidade)

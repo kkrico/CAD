@@ -167,7 +167,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="Infraestrutura\MVC\CPFAttribute.cs" />
     <Compile Include="Infraestrutura\Interface\ITempDataServico.cs" />
-    <Compile Include="Infraestrutura\MVC\TempDataServicoServico.cs" />
+    <Compile Include="Infraestrutura\MVC\TempDataServico.cs" />
     <Compile Include="Infraestrutura\IOC\AllClasses.cs" />
     <Compile Include="Infraestrutura\IOC\UnityFilterAttributeFilterProvider.cs" />
     <Compile Include="Infraestrutura\IOC\UnityControllerFactory.cs" />
@@ -181,6 +181,7 @@
     <Compile Include="Infraestrutura\Interface\IConfigurationReader.cs" />
     <Compile Include="Model\LoginVM.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Model\EsqueciSenhaVM.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -192,6 +193,7 @@
     <Content Include="Scripts\jquery-3.1.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.1.1.min.map" />
     <Content Include="Views\Conta\AreaAutorizada.cshtml" />
+    <Content Include="Views\Conta\EsqueciSenha.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

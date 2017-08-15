@@ -117,16 +117,8 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="M001" xml:space="preserve">
-    <value>Usuário ou senha inválido</value>
-  </data>
-  <data name="M003" xml:space="preserve">
-    <value>Campos obrigatórios em branco!</value>
-  </data>
-  <data name="M011" xml:space="preserve">
-    <value>CPF Inválido</value>
-  </data>
-  <data name="M012" xml:space="preserve">
-    <value>Foi enviado um email com o pedido de alteração de senha. Acesse seu email para alterar a senha</value>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="EsqueciSenha" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\..\Resources\EsqueciSenha.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
   </data>
 </root>

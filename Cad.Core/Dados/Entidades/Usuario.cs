@@ -15,5 +15,7 @@ namespace Cad.Core.Dados.Entidades
 
         [Column("Senha", TypeName = "varchar"), MaxLength(50)]
         public string Senha { get; set; }
+
+        public bool HasAlteracaoSenha { get; set; }
     }
 }

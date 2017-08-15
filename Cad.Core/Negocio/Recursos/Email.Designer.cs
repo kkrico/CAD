@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Cad.Core.Negocio.Mensagem {
+namespace Cad.Core.Negocio.Recursos {
     using System;
     
     
@@ -22,24 +22,24 @@ namespace Cad.Core.Negocio.Mensagem {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public class Mensagem {
+    internal class Email {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal Mensagem() {
+        internal Email() {
         }
         
         /// <summary>
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        public static global::System.Resources.ResourceManager ResourceManager {
+        internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Cad.Core.Negocio.Mensagem.Mensagem", typeof(Mensagem).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Cad.Core.Negocio.Recursos.Email", typeof(Email).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -51,7 +51,7 @@ namespace Cad.Core.Negocio.Mensagem {
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        public static global::System.Globalization.CultureInfo Culture {
+        internal static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -61,38 +61,22 @@ namespace Cad.Core.Negocio.Mensagem {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Usuário ou senha inválido.
+        ///   Looks up a localized string similar to &lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.0 Transitional//EN&quot; &quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd&quot;&gt;
+        ///&lt;html&gt;
+        ///    &lt;head&gt;
+        ///        &lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=UTF-8&quot; /&gt;
+        ///        
+        ///        &lt;!-- Facebook sharing information tags --&gt;
+        ///        &lt;meta property=&quot;og:title&quot; content=&quot;*|MC:SUBJECT|*&quot; /&gt;
+        ///        
+        ///        &lt;title&gt;*|MC:SUBJECT|*&lt;/title&gt;
+        ///		&lt;style type=&quot;text/css&quot;&gt;
+        ///			/* Client-specific Styles */
+        ///			#outlook a{padding:0;} /* Force Outlook to provide a  [rest of string was truncated]&quot;;.
         /// </summary>
-        public static string M001 {
+        internal static string EsqueciSenha {
             get {
-                return ResourceManager.GetString("M001", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Campos obrigatórios em branco!.
-        /// </summary>
-        public static string M003 {
-            get {
-                return ResourceManager.GetString("M003", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to CPF Inválido.
-        /// </summary>
-        public static string M011 {
-            get {
-                return ResourceManager.GetString("M011", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Foi enviado um email com o pedido de alteração de senha. Acesse seu email para alterar a senha.
-        /// </summary>
-        public static string M012 {
-            get {
-                return ResourceManager.GetString("M012", resourceCulture);
+                return ResourceManager.GetString("EsqueciSenha", resourceCulture);
             }
         }
     }

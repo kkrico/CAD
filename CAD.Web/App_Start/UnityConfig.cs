@@ -1,5 +1,7 @@
 using Cad.Core.Dados;
+using CAD.Web.Infraestrutura.Interface;
 using CAD.Web.Infraestrutura.IOC;
+using CAD.Web.Infraestrutura.MVC;
 using Microsoft.Practices.Unity;
 using System;
 using System.Collections.Generic;
@@ -30,6 +32,7 @@ namespace Cad.Web
 
         public static void RegisterTypes(IUnityContainer container)
         {
+            container.RegisterType<ITempDataServico, TempDataServico>(new ContainerControlledLifetimeManager());
             container.RegisterType<CADContext>(new HierarchicalLifetimeManager(), new InjectionConstructor());
         }
 

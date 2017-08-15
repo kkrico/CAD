@@ -59,6 +59,10 @@
     <Compile Include="Migrations\201707262349593_inicial.Designer.cs">
       <DependentUpon>201707262349593_inicial.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201708150023242_Adicionado campo para funcionalidade de esqueci email.cs" />
+    <Compile Include="Migrations\201708150023242_Adicionado campo para funcionalidade de esqueci email.Designer.cs">
+      <DependentUpon>201708150023242_Adicionado campo para funcionalidade de esqueci email.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Negocio\DTO\UsuarioDTO.cs" />
     <Compile Include="Negocio\Exception\NegocioException.cs" />
@@ -66,6 +70,11 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Mensagem.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Negocio\Recursos\Email.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Email.resx</DependentUpon>
     </Compile>
     <Compile Include="Negocio\Servico\Interface\IUsuarioServico.cs" />
     <Compile Include="Negocio\Servico\UsuarioServico.cs" />
@@ -77,14 +86,25 @@
     <EmbeddedResource Include="Migrations\201707262349593_inicial.resx">
       <DependentUpon>201707262349593_inicial.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708150023242_Adicionado campo para funcionalidade de esqueci email.resx">
+      <DependentUpon>201708150023242_Adicionado campo para funcionalidade de esqueci email.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Negocio\Mensagem\Mensagem.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Mensagem.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Negocio\Recursos\Email.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Email.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\EsqueciSenha.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

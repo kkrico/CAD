@@ -11,34 +11,34 @@ namespace Cad.Core.Dados.Repositorio
 
         public void AdicionarOuAtualizar(TEntidade entidade)
         {
-            _set.AddOrUpdate(entidade);
+            Set.AddOrUpdate(entidade);
         }
 
         public void Adicionar(TEntidade entidade)
         {
-            _set.Add(entidade);
+            Set.Add(entidade);
         }
 
         public void Atualizar(TEntidade entidade)
         {
-            _context.Entry(entidade).State = EntityState.Modified;
+            Context.Entry(entidade).State = EntityState.Modified;
         }
 
         public void Excluir(TEntidade entidade)
         {
-            _set.Remove(entidade);
+            Set.Remove(entidade);
         }
 
         public void Excluir(int id)
         {
             var entidade = Obter(id);
 
-            _set.Remove(entidade);
+            Set.Remove(entidade);
         }
 
         public void SalvarAlteracoes()
         {
-            _context.SaveChanges();
+            Context.SaveChanges();
         }
     }
 }

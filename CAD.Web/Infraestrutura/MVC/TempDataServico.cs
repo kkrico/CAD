@@ -3,10 +3,10 @@ using System.Web.Mvc;
 
 namespace CAD.Web.Infraestrutura.MVC
 {
-    public class TempDataServicoServico : ITempDataServico
+    public class TempDataServico : ITempDataServico
     {
         private readonly TempDataDictionary _tempData;
-        public TempDataServicoServico(TempDataDictionary tempData)
+        public TempDataServico(TempDataDictionary tempData)
         {
             _tempData = tempData;
         }

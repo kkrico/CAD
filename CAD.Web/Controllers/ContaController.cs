@@ -10,6 +10,7 @@ namespace CAD.Web.Controllers
         private readonly IConfigurationReader _configurationReader;
         private readonly IUsuarioServico _usuarioServico;
         private readonly ITempDataServico _tempDataServico;
+        private const string Mensagem = "Mensagem";
         private const string ReturnUrl = "ReturnUrl";
 
         public ContaController(IConfigurationReader configurationReader, IUsuarioServico usuarioServico, ITempDataServico tempDataServico)
@@ -22,6 +23,7 @@ namespace CAD.Web.Controllers
         [HttpGet]
         public ActionResult Login(string returnUrl = null)
         {
+            ViewBag.Mensagem = _tempDataServico.Buscar(Mensagem);
             _tempDataServico.Adicionar(ReturnUrl, returnUrl);
             return View("Login");
         }
@@ -42,6 +44,25 @@ namespace CAD.Web.Controllers
         public ActionResult AreaAutorizada()
         {
             return View();
+        }
+
+        [HttpGet]
+        public ActionResult EsqueciSenha()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult EsqueciSenha(EsqueciSenhaVM model)
+        {
+            if (!ModelState.IsValid) return View();
+
+            var dto = EsqueciSenhaVM.Converter(model);
+
+            _usuarioServico.SolicitarMudancaSenha(dto);
+
+            _tempDataServico.Adicionar(Mensagem, Cad.Core.Negocio.Mensagem.Mensagem.M012);
+            return RedirectToAction("Login");
         }
     }
 }
