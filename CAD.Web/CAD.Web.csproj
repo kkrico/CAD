@@ -162,7 +162,7 @@
     <Compile Include="App_Start\IOCConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\UnityConfig.cs" />
-    <Compile Include="Controllers\ConfigurationReader.cs" />
+    <Compile Include="Infraestrutura\MVC\ConfigurationReader.cs" />
     <Compile Include="Controllers\ContaController.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="Infraestrutura\MVC\CPFAttribute.cs" />

@@ -43,38 +43,64 @@ namespace Cad.Core.Negocio.Servico
             if (usuario == null) throw new ArgumentNullException(nameof(usuario));
 
             var usuarioEncontrado = _repositorioUsuario.Obter(u => u.Login == usuario.Login);
-            if (usuarioEncontrado == null) throw new NegocioException("Não foi encontrado este cadastro em nossa base de dado");
+            if (usuarioEncontrado == null) return;
 
             usuarioEncontrado.HasAlteracaoSenha = true;
             _repositorioUsuario.Atualizar(usuarioEncontrado);
             _repositorioUsuario.SalvarAlteracoes();
 
-            var remetente = new RemetenteMensagemDTO()
+
+            var d = new DestinatarioMensagemDTO()
             {
-                Email = "usuario@email.com.br",
-                Nome = "Nome do usuário"
+                Nome = usuarioEncontrado.Login,
+                Email = usuario.Email
             };
-            var mensagem = _servicoEmail.ObterMensagemAlteracaoSenha(remetente);
+            var mensagem = _servicoEmail.ObterMensagemAlteracaoSenha(d);
             _servicoEmail.EnviarMensagem(mensagem);
         }
     }
 
+    public class DestinatarioMensagemDTO
+    {
+        public string Email { get; set; }
+        public string Nome { get; set; }
+    }
+
     public class EmailServico
     {
-        public MensagemAlteracaoSenhaDTO ObterMensagemAlteracaoSenha(RemetenteMensagemDTO remetenteMensagemDTO)
+        private readonly RemetenteMensagemDTO _remetenteMensagem;
+
+        public EmailServico() : this(new RemetenteMensagemDTO
         {
-            return new MensagemAlteracaoSenhaDTO()
+            Email = "meajuda@cadsys.com.br",
+            Nome = "Me Ajuda - CadSys"
+        })
+        {
+
+        }
+
+        public EmailServico(RemetenteMensagemDTO remetenteMensagem)
+        {
+            _remetenteMensagem = remetenteMensagem;
+        }
+
+        public MensagemAlteracaoSenhaDTO ObterMensagemAlteracaoSenha(DestinatarioMensagemDTO destinatario)
+        {
+            var msg = new MensagemAlteracaoSenhaDTO
             {
-                Texto = Email.EsqueciSenha
+                Texto = Email.EsqueciSenha,
+                Destinatario = destinatario
             };
+
+            return msg;
         }
 
         public void EnviarMensagem(MensagemAlteracaoSenhaDTO mensagem)
         {
             if (mensagem == null) throw new ArgumentNullException(nameof(mensagem));
 
-            var from = new MailAddress("meajuda@cadsys.com.br", "Me Ajuda - CadSys");
-            var to = new MailAddress(mensagem.EmailDestinatario, mensagem.NomeDestinatario);
+            var from = new MailAddress(_remetenteMensagem.Email, _remetenteMensagem.Nome);
+            var to = new MailAddress(mensagem.Destinatario.Email, mensagem.Destinatario.Nome);
             var mail = new MailMessage(from, to);
             var client = new SmtpClient
             {
@@ -99,8 +125,7 @@ namespace Cad.Core.Negocio.Servico
 
     public class MensagemAlteracaoSenhaDTO
     {
-        public string NomeDestinatario { get; set; }
-        public string EmailDestinatario { get; set; }
+        public DestinatarioMensagemDTO Destinatario { get; set; }
         public string Texto { get; set; }
 
         public string Assunto => "Alteração de Email - CADSYS";
@@ -109,5 +134,6 @@ namespace Cad.Core.Negocio.Servico
     public class UsuarioNovaSenhaDTO
     {
         public string Login { get; set; }
+        public string Email { get; set; }
     }
 }

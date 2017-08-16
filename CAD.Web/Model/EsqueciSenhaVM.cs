@@ -29,7 +29,7 @@ namespace CAD.Web
             Guard.IsNotNull(model);
 
             var destino = Mapeador.MapearPara<EsqueciSenhaVM, UsuarioNovaSenhaDTO>(model);
-
+            destino.Login = model.LoginFormatado;
             return destino;
         }
     }
