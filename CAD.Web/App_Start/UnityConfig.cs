@@ -1,4 +1,5 @@
 using Cad.Core.Dados;
+using CAD.Web.Controllers;
 using CAD.Web.Infraestrutura.Interface;
 using CAD.Web.Infraestrutura.IOC;
 using CAD.Web.Infraestrutura.MVC;

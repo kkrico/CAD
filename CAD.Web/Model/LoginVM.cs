@@ -20,7 +20,7 @@ namespace CAD.Web.Model
 
         public string LoginFormatado => Login.Replace(".", "").Replace("-", "");
 
-        [Display(Name = "Lembrar a senha?")]
+        [Display(Name = "Lembrar a senha")]
         public bool LembrarSenha { get; set; }
 
         public static UsuarioDTO Converter(LoginVM model)
@@ -28,7 +28,7 @@ namespace CAD.Web.Model
             Guard.IsNotNull(model);
 
             var destino = Mapeador.MapearPara<LoginVM, UsuarioDTO>(model);
-
+            destino.Login = model.LoginFormatado;
             return destino;
         }
     }

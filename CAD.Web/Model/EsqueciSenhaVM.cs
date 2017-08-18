@@ -21,7 +21,8 @@ namespace CAD.Web
         public bool LembrarSenha { get; set; }
 
         [Display(Name = "Email")]
-        [Email]
+        [Email(ErrorMessageResourceName = "M003", ErrorMessageResourceType = typeof(Mensagem))]
+        [Required(ErrorMessageResourceName = "M005", ErrorMessageResourceType = typeof(Mensagem), AllowEmptyStrings = false)]
         public string Email { get; set; }
 
         public static UsuarioNovaSenhaDTO Converter(EsqueciSenhaVM model)
@@ -49,11 +50,6 @@ namespace CAD.Web
                 + "@"
                 + @"((([\-\w]+\.)+[a-zA-Z]{2,4})|(([0-9]{1,3}\.){3}[0-9]{1,3}))$")
         { }
-
-        public override string FormatErrorMessage(string name)
-        {
-            return "E-mail is not valid";
-        }
     }
 
 }

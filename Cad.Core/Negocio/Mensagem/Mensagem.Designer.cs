@@ -79,6 +79,15 @@ namespace Cad.Core.Negocio.Mensagem {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Email inválido.
+        /// </summary>
+        public static string M005 {
+            get {
+                return ResourceManager.GetString("M005", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to CPF Inválido.
         /// </summary>
         public static string M011 {

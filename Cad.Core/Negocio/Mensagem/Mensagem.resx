@@ -123,6 +123,9 @@
   <data name="M003" xml:space="preserve">
     <value>Campos obrigatórios em branco!</value>
   </data>
+  <data name="M005" xml:space="preserve">
+    <value>Email inválido</value>
+  </data>
   <data name="M011" xml:space="preserve">
     <value>CPF Inválido</value>
   </data>

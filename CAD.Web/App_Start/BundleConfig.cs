@@ -8,6 +8,7 @@ namespace CAD.Web
         {
             bundles.Add(new StyleBundle("~/css")
                 .Include("~/Content/bootstrap.css")
+                .Include("~/Content/bootstrap-cad-theme.css")
                 .Include("~/Content/CAD/cad.css"));
 
             bundles.Add(new ScriptBundle("~/js")
